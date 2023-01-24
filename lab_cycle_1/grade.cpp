@@ -18,7 +18,7 @@ class grades
     }
     int calc()
     {
-        return (mark_a+mark_b+mark_c)/3;
+        return (mark_a+mark_b+mark_c)*100/150;
     }
     void display(void);
 };
@@ -37,16 +37,16 @@ void grades::get_info()
     std::cout<<"Enter roll number : ";
     std::cin>>roll;
 
-    std::cout<<"Enter mark1 (out of 10) : ";
+    std::cout<<"Enter mark1 (out of 50) : ";
     std::cin>>a;
 
-    std::cout<<"Enter mark2 (out of 10) : ";
+    std::cout<<"Enter mark2 (out of 50) : ";
     std::cin>>b;
 
-    std::cout<<"Enter mark3 (out of 10) : ";
+    std::cout<<"Enter mark3 (out of 50) : ";
     std::cin>>c;
 
-    if (a>10 || b>10 || c>10)
+    if (a>50 || b>50 || c>50)
     {
         std::cout<<"You have entered invalid marks , pls try again \n";
         exit(0);
@@ -57,13 +57,13 @@ void grades::get_info()
 void grades::display(void)
     {
         std::cout<<"\n---- Grade list ----\n";
-        if (calc()>=8.5){ 
+        if (calc()>=90){ 
             std::cout<<" Name : "<<name<<"\n"<<" Roll no : "<<roll_no <<"\n"<<" Grade : "<<"A" <<"\n";
         }
-        else if (calc()>7){
+        else if (calc()>80){
             std::cout<<" Name : "<<name<<"\n"<<" Roll no : "<<roll_no <<"\n"<<" Grade : "<<"B" <<"\n";
         }
-        else if (calc()>5.5){
+        else if (calc()>70){
             std::cout<<" Name : "<<name<<"\n"<<" Roll no : "<<roll_no <<"\n"<<" Grade : "<<"C" <<"\n";
         }
         else {
