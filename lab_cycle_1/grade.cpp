@@ -31,41 +31,45 @@ void grades::get_info()
     
     std::cout<<"\n";
     
-    std::cout<<"ente name : ";
+    std::cout<<"Enter name : ";
     std::cin>>name1;
 
-    std::cout<<"ente roll no : ";
+    std::cout<<"Enter roll number : ";
     std::cin>>roll;
 
-
-    std::cout<<"ente mak1 (out of 10) : ";
+    std::cout<<"Enter mark1 (out of 10) : ";
     std::cin>>a;
 
-    std::cout<<"ente mak2 (out of 10) : ";
+    std::cout<<"Enter mark2 (out of 10) : ";
     std::cin>>b;
 
-    std::cout<<"ente mak3 (out of 10) : ";
+    std::cout<<"Enter mark3 (out of 10) : ";
     std::cin>>c;
 
+    if (a>10 || b>10 || c>10)
+    {
+        std::cout<<"You have entered invalid marks , pls try again \n";
+        exit(0);
+    }
     set_input(a, b, c,name1,roll);
     }
     
 void grades::display(void)
     {
-        std::cout<<"\n --- Grade list --- \n";
-        if (calc()>=8.5){
-            std::cout<<"Name : "<<name<<"\n"<<"roll no : "<<roll_no <<"\n"<<"Grade : "<<"A" <<"\n";
+        std::cout<<"\n---- Grade list ----\n";
+        if (calc()>=8.5){ 
+            std::cout<<" Name : "<<name<<"\n"<<" Roll no : "<<roll_no <<"\n"<<" Grade : "<<"A" <<"\n";
         }
         else if (calc()>7){
-            std::cout<<"Name : "<<name<<"\n"<<"roll no : "<<roll_no <<"\n"<<"Grade : "<<"B" <<"\n";
+            std::cout<<" Name : "<<name<<"\n"<<" Roll no : "<<roll_no <<"\n"<<" Grade : "<<"B" <<"\n";
         }
         else if (calc()>5.5){
-            std::cout<<"Name : "<<name<<"\n"<<"roll no : "<<roll_no <<"\n"<<"Grade : "<<"C" <<"\n";
+            std::cout<<" Name : "<<name<<"\n"<<" Roll no : "<<roll_no <<"\n"<<" Grade : "<<"C" <<"\n";
         }
         else {
-            std::cout<<"Name : "<<name<<"\n"<<"roll no : "<<roll_no <<"\n"<<"Grade : "<<"D" <<"\n";
+            std::cout<<" Name : "<<name<<"\n"<<" Roll no : "<<roll_no <<"\n"<<" Grade : "<<"D" <<"\n";
         }
-        std::cout<<"\n";
+        std::cout<<"-------- ---------- \n";
     }
 int main()
 {
