@@ -56,7 +56,7 @@ void grades::get_info()
     
 void grades::display(void)
     {
-        std::cout<<"\n---- Grade list ----\n";
+        std::cout<<"\n---- Progress Report ----\n";
         if (calc()>=90){ 
             std::cout<<" Name : "<<name<<"\n"<<" Roll no : "<<roll_no <<"\n"<<" Grade : "<<"A" <<"\n";
         }
@@ -74,24 +74,20 @@ void grades::display(void)
     
 int main()
 {
-    grade g[50];
 int no_of_students,i,n;
 std::cout<<"Enter the number of students : " ;
 std::cin>>no_of_students;
-
-
+grades g[no_of_students];
 
 for(i=0; i<no_of_students; i++)
-{
-   
-   g[i].get_info();
-   
-  
+{  
+   std::cout<<"\nEnter details of student : "<<i+1;
+   g[i].get_info(); 
 }
-
-for(n=0; n<sizeof(array); n++)
+std::cout<<"\n       Grade list       \n";
+for(n=0; n<no_of_students; n++)
 {
-    std::cout<<array[n]<<"\n";
+    g[n].display();
 }
 
 return 0;
