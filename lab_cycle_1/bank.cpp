@@ -139,10 +139,14 @@ int main()
                 customer[i].statement();
                 break;
             }
-
-            std::cout<<"\n1 - to continue \n2 - to next \n3 - to quit\n";
-            std::cin>>ask;
-
+            if(i+1 == no_of_cust){
+                std::cout<<"\n1 - to continue \n3 - to quit\n";
+                std::cin>>ask;
+            }
+            else{
+                std::cout<<"\n1 - to continue \n2 - to next \n3 - to quit\n";
+                std::cin>>ask;
+            }
             if (ask==3)
             {
                 exit(0);
@@ -150,4 +154,5 @@ int main()
         }
         i++;
     }
+    return 0;
 }
