@@ -36,7 +36,7 @@ void grades::get_info()
 
     std::cout<<"Enter roll number : ";
     std::cin>>roll;
-
+    do{
     std::cout<<"Enter mark1 (out of 50) : ";
     std::cin>>a;
 
@@ -46,11 +46,11 @@ void grades::get_info()
     std::cout<<"Enter mark3 (out of 50) : ";
     std::cin>>c;
 
-    if (a>50 || b>50 || c>50)
+    if(a>50 || b>50 || c>50)
     {
-        std::cout<<"You have entered invalid marks , pls try again \n";
-        exit(0);
+        std::cout<<"invalid marks pls retry \n";
     }
+    }while(a>50 || b>50 || c>50);
     set_input(a, b, c,name1,roll);
     }
     
@@ -78,7 +78,6 @@ int no_of_students,i,n;
 std::cout<<"Enter the number of students : " ;
 std::cin>>no_of_students;
 grades g[no_of_students];
-
 for(i=0; i<no_of_students; i++)
 {  
    std::cout<<"\nEnter details of student : "<<i+1;
