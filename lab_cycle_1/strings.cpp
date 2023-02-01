@@ -1,4 +1,6 @@
 #include <iostream>
+#include <string>
+
 class string_ops
 {
     private:
@@ -56,7 +58,7 @@ void string_ops::compare()
         std::cout<<"with how much strings do you want to compare : ";
         std::cin>>n;
         
-        std::string string_check[n]; //array created to store strings to compare
+        std::string string_check[n+1]; //array created to store strings to compare
         string_check[0]=string; //first term of array given as the main string 
         
         for(i=1;i<n+1;i++)
@@ -65,7 +67,7 @@ void string_ops::compare()
         std::cin>>string_check[i];
         }
         
-        for(i=0;i<n+1;i++)
+        for(i=0;i<n;i++)
         {
             check = string_check[i];
             int length = check.length();
@@ -92,14 +94,14 @@ void string_ops::compare()
             for(i=0;i<n+1;i++){
                 if (string_check[i].length()==big)
                 {
-                    num++;
                     same[num] = string_check[i];
+                    num++;
                 }
             }
             if(num>1)
             {
                 std::cout<<"there are "<<count<<" same and largest length of strings with length "<<big<<" and they are : ";
-                for(i=0;i<num+1;i++)
+                for(i=0;i<num;i++)
                 {
                 std::cout<<same[i]<<" ";
                 }
