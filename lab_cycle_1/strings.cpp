@@ -100,7 +100,7 @@ void string_ops::compare()
             }
             if(num>1)
             {
-                std::cout<<"there are "<<count<<" same and largest length of strings with length "<<big<<" and they are : ";
+                std::cout<<"there are "<<num<<" same and largest length of strings with length "<<big<<" and they are : ";
                 for(i=0;i<num;i++)
                 {
                 std::cout<<same[i]<<" ";

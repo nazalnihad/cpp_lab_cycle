@@ -50,7 +50,7 @@ int main()
 		std::cout<<"ROW"<<i+1<<std::endl;
 		for(int j=0;j<n;j++)
 		{
-			std::cout<<"Enter the value : ";
+			std::cout<<"Enter the "<<"value at position "<<j+1<< " : ";
 			std::cin>>value;
 			a.getelement(i,j,value);
 		}
