@@ -6,13 +6,13 @@ class matrix
     int **p;
     public:
     matrix(){
-    }
+        rows = 0;
+        cols = 0;
+        }
     matrix(int,int);
-    int get_rows(){return rows;}
-    int get_cols(){return cols;}
     void getelement(int,int,int);
     int putelement(int,int);
-    void get_matrix();
+    matrix get_matrix();
     void sum(matrix&,matrix&);
 
     // ~matrix()
@@ -47,7 +47,7 @@ int matrix::putelement(int x,int y)
     return p[x][y];
 }
 
-void matrix::get_matrix()
+matrix matrix::get_matrix()
 {
     int m,n;
     std::cout<<"Enter no of rows : ";
@@ -78,41 +78,38 @@ void matrix::get_matrix()
         }
         std::cout<<std::endl;
     }
+    return a;
 }
 
 void matrix::sum(matrix &a,matrix &b)
 {
-    int value,row,col;
-    row = a.get_rows();
-    col = a.get_cols();
-
-    std::cout<<row<<" "<<col<<"\n";
-    matrix c(2, 2);
+    matrix c(a.rows,a.cols);
+    int value;
     std::cout<<"sum of the matrix is \n";
-    for(int i=0;i<row;i++)
+    for(int i=0;i<a.rows;i++)
     {
-        for(int j=0;j<col;j++)
+        for(int j=0;j<a.cols;j++)
         {
             value = a.putelement(i,j)+b.putelement(i,j);
             c.getelement(i,j,value);
         }
     }
-    for(int i=0;i<row;i++)
+    for(int i=0;i<a.rows;i++)
     {
-        for(int j=0;j<col;j++)
+        for(int j=0;j<a.cols;j++)
         {
             std::cout<<c.putelement(i,j)<<" ";
         }
-        std::cout<<" ";
+        std::cout<<"\n";
     }
 }
 
 
 int main()
 {
-    matrix a,b,c;
-    a.get_matrix();
-    b.get_matrix();
-    c.sum(a,b);
+    matrix a,b,c,d,e;
+    d=a.get_matrix();
+    e=b.get_matrix();
+    c.sum(d,e);
     return 0;
 }
