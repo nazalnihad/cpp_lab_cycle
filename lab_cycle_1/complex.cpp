@@ -28,21 +28,29 @@ void complex::complex_add(complex &a,complex &b)
     complex c;
     c.real = a.real+b.real;
     c.imag = a.imag+b.imag;
-    
-    std::cout<<"\nsum of matrix is "<<c.real<<"+"<<c.imag<<"i";
+    if(c.imag>0){
+    std::cout<<"\nsum of matrix is "<<c.real<<"+"<<c.imag<<"i \n";
+    }
+    else{
+        std::cout<<"\nsum of matrix is "<<c.real<<c.imag<<"i \n";
+    }
 }
 void complex::display()
 {
+    if(imag>0)
+    {
     std::cout<<real<<"+"<<imag<<"i";
+    }
+    else{
+        std::cout<<real<<imag<<"i";
+    }
 }
 int main()
 {
     float a,b,c,d;
     std::cout<<"\n==== complex 1 ====\n";
-    std::cout<<"enter the real part : ";
+    std::cout<<"enter the single no to real and image part : ";
     std::cin>>a;
-    std::cout<<"enter the imaginary part : ";
-    std::cin>>b;
     
     complex obj1(a);
     obj1.display();

@@ -2,18 +2,18 @@
 //two time objects by passing objects to function and display result.
 
 #include <iostream>
-class time
+class TIME
 {
     private:
     int hour,min,sec;
 
     public:
     void input();
-    int add_time(time,time);
+    int add_time(TIME,TIME);
     void display();
 };
 
-void time::input(){
+void TIME::input(){
     std::cout<<"Enter hours : ";
     std::cin>>hour;
 
@@ -24,7 +24,7 @@ void time::input(){
     std::cin>>sec;
 }
 
-int time::add_time(time t1, time t2){
+int TIME::add_time(TIME t1, TIME t2){
     sec = t1.sec+t2.sec;
     min = sec/60+t1.min+t2.min;
     sec = sec%60;
@@ -35,14 +35,17 @@ int time::add_time(time t1, time t2){
     return sec , min , hour;
 }
 
-void time::display(){
+void TIME::display(){
     std::cout<<hour<<" : Hours "<<min<<" : Min "<<sec<<" : Seconds";
 }
 int main()
 {
-    time t1,t2,t3;
+    TIME t1,t2,t3;
+    std::cout<<"Enter time 1  \n";
     t1.input();
+    std::cout<<"Enter time 2 \n";   
     t2.input();
+    std::cout<<"\n=== Total time  ===\n";
     t3.add_time(t1,t2);
 
     t3.display();
