@@ -5,15 +5,15 @@ class matrix
     int rows,cols;
     int **p;
     public:
-    matrix(){
-        rows = 0;
-        cols = 0;
-        }
+    matrix(){}
     matrix(int,int);
     void getelement(int,int,int);
     int putelement(int,int);
+    
+    void sum(matrix,matrix);
+    void mult(matrix&,matrix&);
     matrix get_matrix();
-    void sum(matrix&,matrix&);
+    matrix display(matrix);
 
     // ~matrix()
     // {
@@ -69,47 +69,70 @@ matrix matrix::get_matrix()
         }
     }
 
-    std::cout<<"your matrix is \n";
-    for(int i=0;i<m;i++)
-    {
-        for(int j=0;j<n;j++)
-        {
-            std::cout<<a.putelement(i,j)<<"  ";
-        }
-        std::cout<<std::endl;
-    }
+    a.display(a);
     return a;
 }
 
-void matrix::sum(matrix &a,matrix &b)
+matrix matrix::display(matrix a)
 {
-    matrix c(a.rows,a.cols);
-    int value;
-    std::cout<<"sum of the matrix is \n";
     for(int i=0;i<a.rows;i++)
     {
         for(int j=0;j<a.cols;j++)
         {
-            value = a.putelement(i,j)+b.putelement(i,j);
-            c.getelement(i,j,value);
-        }
-    }
-    for(int i=0;i<a.rows;i++)
-    {
-        for(int j=0;j<a.cols;j++)
-        {
-            std::cout<<c.putelement(i,j)<<" ";
+            std::cout<<a.putelement(i,j)<<" ";
         }
         std::cout<<"\n";
     }
+} 
+
+void matrix::sum(matrix a,matrix b)
+{
+    matrix add(a.rows,a.cols);
+    int value;
+
+    if(a.rows == b.rows && a.cols == b.cols)
+    {
+        std::cout<<"sum of the matrix is \n";
+        for(int i=0;i<a.rows;i++)
+        {
+            for(int j=0;j<a.cols;j++)
+            {
+                value = a.putelement(i,j)+b.putelement(i,j);
+                add.getelement(i,j,value);
+            }
+    }
+    add.display(add);
+    }
+    else
+    {
+        std::cout<<"matrix sum can only be done when both matrices are of same type \n";
+    }
 }
 
-
+void matrix::mult(matrix &a,matrix &b)
+{
+    matrix mult(a.rows,a.cols);
+    std::cout<<"product of the matrix is \n";
+    for(int i=0;i<a.rows;i++)
+    {
+        for(int j=0;j<b.cols;j++)
+        {
+            int value = 0;
+            for(int k=0;k<a.cols;k++)
+            {
+                value = value + a.putelement(i,k)*b.putelement(k,j);
+            }
+            mult.getelement(i,j,value);
+        }
+    }
+    mult.display(mult);
+}
 int main()
 {
     matrix a,b,c,d,e;
     d=a.get_matrix();
     e=b.get_matrix();
     c.sum(d,e);
+    c.mult(d,e);
     return 0;
 }
