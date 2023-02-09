@@ -1,31 +1,29 @@
 #include <iostream>
-
 class matrix
 {
     int rows,cols;
     int **p;
     public:
     matrix(){}
+    // ~matrix(){
+    // 	for(int i=0;i<rows;i++){
+    // 		delete p[i];
+    // 	}
+    // 	delete p;
+    //     std::cout<<"memory release\n";
+    // }
     matrix(int,int);
     void getelement(int,int,int);
     int putelement(int,int);
     
-    void sum(matrix,matrix);
+    void sum(matrix&,matrix&);
     void mult(matrix&,matrix&);
     void transpose(matrix);
     void trace(matrix);
+
     matrix get_matrix();
     matrix display(matrix);
 
-    // ~matrix()
-    // {
-    //     for(int i=0; i<d1;i++)
-    //     {
-    //         delete p[i];
-    //     }
-    //     delete p;
-    //     std::cout<<"memory released \n";
-    // }
 };
 
 matrix::matrix(int x, int y)
@@ -59,18 +57,14 @@ matrix matrix::get_matrix()
 
     matrix a(m,n);
     int value;
-
-    for(int i=0;i<m;i++)
-    {
+    for(int i=0;i<m;i++){
         std::cout<<"ROW "<<i+1<<"\n";
-        for(int j=0;j<n;j++)
-        {
+        for(int j=0;j<n;j++){
             std::cout<<"Enter value at position ["<<i+1<<"]"<<"["<<j+1<<"] : ";
             std::cin>>value;
             a.getelement(i,j,value);
         }
     }
-
     a.display(a);
     return a;
 }
@@ -78,26 +72,21 @@ matrix matrix::get_matrix()
 matrix matrix::display(matrix a)
 {
     std::cout<<"\n";
-    for(int i=0;i<a.rows;i++)
-    {
-        for(int j=0;j<a.cols;j++)
-        {
+    for(int i=0;i<a.rows;i++){
+        for(int j=0;j<a.cols;j++){
             std::cout<<a.putelement(i,j)<<" ";
         }
         std::cout<<"\n";
     }
 } 
 
-void matrix::sum(matrix a,matrix b)
+void matrix::sum(matrix &a,matrix &b)
 {
     matrix add(a.rows,a.cols);
     int value;
-
-    if(a.rows == b.rows && a.cols == b.cols)
-    {
+    if(a.rows == b.rows && a.cols == b.cols){
         std::cout<<"sum of the matrix is \n";
-        for(int i=0;i<a.rows;i++)
-        {
+        for(int i=0;i<a.rows;i++){
             for(int j=0;j<a.cols;j++)
             {
                 value = a.putelement(i,j)+b.putelement(i,j);
@@ -114,12 +103,10 @@ void matrix::sum(matrix a,matrix b)
 
 void matrix::mult(matrix &a,matrix &b)
 {
-    if(a.cols == b.rows)
-    {
+    if(a.cols == b.rows){
     matrix mult(a.rows,b.cols);
     std::cout<<"product of the matrix is \n";
-    for(int i=0;i<a.rows;i++)
-    {
+    for(int i=0;i<a.rows;i++){
         for(int j=0;j<b.cols;j++)
         {
             int value = 0;
@@ -137,12 +124,9 @@ void matrix::mult(matrix &a,matrix &b)
     }
 }
 
-void matrix::transpose(matrix a)
-{
-    for(int i=0;i<a.cols;i++)
-    {
-        for(int j=0;j<a.rows;j++)
-        {
+void matrix::transpose(matrix a){
+    for(int i=0;i<a.cols;i++){
+        for(int j=0;j<a.rows;j++){
             std::cout<<a.putelement(j,i)<<" ";
         }
         std::cout<<"\n";
@@ -152,12 +136,9 @@ void matrix::transpose(matrix a)
 void matrix::trace(matrix a)
 {
     int sum = 0;
-    if(a.rows == a.cols)
-    {
-        for(int i=0;i<a.rows;i++)
-        {
-            for(int j=0;j<a.cols;j++)
-            {
+    if(a.rows == a.cols){
+        for(int i=0;i<a.rows;i++){
+            for(int j=0;j<a.cols;j++){
                 if(i==j)
                 {
                 sum = sum+a.putelement(i,j);
@@ -169,7 +150,6 @@ void matrix::trace(matrix a)
     else{
         std::cout<<"can't find the trace of the matrix \n";
     }
-
 }
 int main()
 {
@@ -192,7 +172,6 @@ int main()
     std::cout<<"\n 4 - to find trace of matrices ";
     std::cout<<"\n 5 - to quit \n : ";
     std::cin>>choice;
-
     switch (choice)
     {
         case 1:
@@ -226,10 +205,5 @@ int main()
         std::cout<<"Enter a valid choice \n";
     }
     }while(choice!=5);
-//     // // c.sum(d,e);
-//     // c.mult(d,e);
-//     c.transpose(d);
-//    //  c.transpose(e);
-//    c.trace(d);
     return 0;
 }
