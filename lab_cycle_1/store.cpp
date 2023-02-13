@@ -170,6 +170,7 @@ int main()
             break;
 
             case 5:
+            std::cout<<"\n========== THANKYOU ==========\n";
             exit(0);
             }
         }while(choice!=5);
