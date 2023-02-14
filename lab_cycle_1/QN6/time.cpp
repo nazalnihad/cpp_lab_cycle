@@ -41,9 +41,9 @@ void TIME::display(){
 int main()
 {
     TIME t1,t2,t3;
-    std::cout<<"Enter time 1  \n";
+    std::cout<<"\nEnter time 1  \n";
     t1.input();
-    std::cout<<"Enter time 2 \n";   
+    std::cout<<"\nEnter time 2 \n";   
     t2.input();
     std::cout<<"\n=== Total time  ===\n";
     t3.add_time(t1,t2);

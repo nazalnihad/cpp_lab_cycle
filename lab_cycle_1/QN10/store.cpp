@@ -104,7 +104,6 @@ void store::add_more()
 
     for(int i=limit-more;i<limit;i++)
     {
-    std::cout<<more<<"\n"<<i<<"\n";
     std::cout<<"\nEnter item name : ";
     std::cin>>item_name[i];
     std::cout<<"Enter item code : ";
@@ -123,7 +122,7 @@ void store::receipt()
     {
         sum = sum+price[i];
     }
-    std::cout<<"\n\t\t======== RECEIPT ========\t\t\n";
+    std::cout<<"\n\t======== RECEIPT ========\t\t\n";
     std::cout<<"NAME"<<std::setw(10)<<"CODE"<<std::setw(10)<<"QUANTITY"<<std::setw(20)<<"PRICE"<<"\n";
     for(int i=0;i<limit;i++){
     std::cout<<item_name[i]<<std::setw(10)<<code[i]<<std::setw(10)<<quantity[i]<<std::setw(20)<<price[i]<<"\n";

@@ -39,7 +39,7 @@ void exchange(class1 &a,class2 &b)
 
 int main()
 {
-    std::cout<<"\n=== No exchange program ===\n";
+    std::cout<<"\n=== Number exchange program ===\n";
     class1 obj1;
     int value1;
     std::cout<<"Enter value in class 1 : ";

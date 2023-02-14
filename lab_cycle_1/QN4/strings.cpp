@@ -67,7 +67,7 @@ void string_ops::compare()
         std::cin>>string_check[i];
         }
         
-        for(i=0;i<n;i++)
+        for(i=0;i<n+1;i++)
         {
             check = string_check[i];
             int length = check.length();
@@ -79,7 +79,7 @@ void string_ops::compare()
             }   
         }
         
-        for(i=0;i<n;i++)
+        for(i=0;i<n+1;i++)
         {
             if(string_check[i].length() == big)
             {
