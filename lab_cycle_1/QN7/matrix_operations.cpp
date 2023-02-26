@@ -99,12 +99,17 @@ void matrix::sum(matrix &a,matrix &b)
     {
         std::cout<<"matrix sum can only be done when both matrices are of same type \n";
     }
+    for(int i=0;i<add.rows;i++){
+        delete add.p[i];
+    }
+    delete add.p;
+    std::cout<<"memory released \n";
 }
 
 void matrix::mult(matrix &a,matrix &b)
 {
     if(a.cols == b.rows){
-    matrix mult(a.rows,b.cols);
+    matrix multiply(a.rows,b.cols);
     std::cout<<"product of the matrix is \n";
     for(int i=0;i<a.rows;i++){
         for(int j=0;j<b.cols;j++)
@@ -114,10 +119,15 @@ void matrix::mult(matrix &a,matrix &b)
             {
                 value = value + a.putelement(i,k)*b.putelement(k,j);
             }
-            mult.getelement(i,j,value);
+            multiply.getelement(i,j,value);
         }
     }
-    mult.display(mult);
+    multiply.display(multiply);
+    for(int i=0;i<multiply.rows;i++){
+        delete multiply.p[i];
+    }
+    delete multiply.p;
+    std::cout<<"memory released \n";
     }
     else{
         std::cout<<"matrix multiplication is not possible \n";
