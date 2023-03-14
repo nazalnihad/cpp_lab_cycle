@@ -24,7 +24,7 @@ class grades
     void display(void);
 };
 
-void grades::get_info()
+void grades::get_info() //input details 
     {
 
     int a,b,c,roll;
@@ -55,7 +55,7 @@ void grades::get_info()
     set_input(a, b, c,name1,roll);
     }
     
-void grades::display(void)
+void grades::display(void) //calculate grades according to conditions
     {
         std::cout<<"\n---- Progress Report ----\n";
         if (calc()>=90){ 
