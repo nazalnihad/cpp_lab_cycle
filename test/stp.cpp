@@ -48,7 +48,12 @@ void store::delete_item()
 
     if(del==true)
     {
-        for(int j=limit; j<20;j++ )
+        if (quantity[l]>1)
+        {
+            int value;
+            std::cout<<"1 - Enter the quantity you want to reduce\n2 - to delete item completely"
+        }
+        for(int j=limit; j<i-limit;j++ )
         {
             code[j] = code[j-1];
             name[j] = name[j-1];
@@ -77,7 +82,7 @@ int main()
  while(choice==1)
  {
     int opt;
-    std::cout<<"Enter choice : ";
+    std::cout<<"1 - to add item \n2 - to remove an item \n3 - to get the total bill \n4 - to quit \n : ";
     std::cin>>opt;
 
     switch(opt)
