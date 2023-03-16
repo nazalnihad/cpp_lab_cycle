@@ -50,7 +50,7 @@ void store::delete_item()
         }
     }
 
-    if(del==true)
+    if(del==true) //deletes according to conditions
     {
         if (quantity[limit]>1)
         {
@@ -91,7 +91,7 @@ void store::delete_item()
 
 void store::change(int limit)
 {
-    for(int j=limit; j<i-1;j++ )
+    for(int j=limit; j<i-1;j++)//algo to delete/replace removed element
     {
         code[j] = code[j+1];
         name[j] = name[j+1];

@@ -35,7 +35,7 @@ class beta
     }
 };
 
-class gamma:public alpha , public beta
+class gamma:public alpha , public beta //first inherited class will show constructor first 
 {
     protected:
     int gamma_value;
@@ -45,7 +45,7 @@ class gamma:public alpha , public beta
         std::cout<<"This is the default constructor of 'gamma' class \n";
         std::cout<<"Since we are inheriting alpha first then beta , constructors of 'alpha' will be shown first , then 'beta'\n";
     }
-    gamma(int n1,int n2,int n3):alpha(n1),beta(n2)
+    gamma(int n1,int n2,int n3):alpha(n1),beta(n2) //constructor declared according to input 
     {
         gamma_value = n3;
         std::cout<<"This is the parameterised constructor of class 'gamma'\n";
@@ -56,8 +56,6 @@ class gamma:public alpha , public beta
 int main()
 {
     int choice,alpha_val,beta_val,gamma_val;
-
-  
     do{
     std::cout<<"\n1 - to show default constructors\n2 - to show parameterised constructors\n3 - to show both\n4 - to quit\n: ";
     std::cin>>choice;

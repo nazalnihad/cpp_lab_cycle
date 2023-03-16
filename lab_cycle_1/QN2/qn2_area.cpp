@@ -5,6 +5,7 @@ class area_shapes{
     int side , base , height , pll_side1 , pll_side2  ;
     float  radius , length ,breadth ,pi=3.14 ;
     public:
+    //function overloading
     int area(int);
     int area(int,int);
     float area(float);

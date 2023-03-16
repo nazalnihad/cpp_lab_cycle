@@ -108,11 +108,11 @@ void matrix::sum(matrix &a,matrix &b)
 
 void matrix::mult(matrix &a,matrix &b)
 {
-    if(a.cols == b.rows){
+    if(a.cols == b.rows){ //condition for multiplication to be possible
     matrix multiply(a.rows,b.cols);
     std::cout<<"product of the matrix is \n";
-    for(int i=0;i<a.rows;i++){
-        for(int j=0;j<b.cols;j++)
+    for(int i=0;i<a.rows;i++){ //first checks on row of 1st matrix 
+        for(int j=0;j<b.cols;j++)//then goes to 2nd's column
         {
             int value = 0;
             for(int k=0;k<a.cols;k++)

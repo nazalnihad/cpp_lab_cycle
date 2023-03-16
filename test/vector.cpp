@@ -6,8 +6,7 @@ class Vector
     int s;
 
     public:
-    Vector(){
-    }
+    Vector(){}
     Vector(int x,int y,int z)
     {
         s = 3;

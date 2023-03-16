@@ -6,6 +6,7 @@ class Vector
     int static count;
     public:
     Vector(){}
+    //istream for input stream and ostream for output stream
     friend istream& operator >>(istream &in,Vector&a);
     friend ostream& operator <<(ostream &out,const Vector&a);
     friend Vector operator *(const Vector&,const Vector&);
@@ -16,7 +17,7 @@ istream& operator >>(istream &in,Vector &a)
     cout<<"\nVector "<<Vector::count<<endl;
     Vector::count++;
     cout<<"x = ";
-    in >>a.x;
+    in >>a.x; //input according to what we declared in istream
     cout<<"Y = ";
     in >>a.y;
     cout<<"Z = ";
@@ -25,7 +26,7 @@ istream& operator >>(istream &in,Vector &a)
 }
 ostream& operator <<(ostream &out,const Vector&a)
 {
-    if(a.y<0 && a.z<0){
+    if(a.y<0 && a.z<0){ //out accding to ostream value
     out<<a.x<<"i"<<a.y<<"j"<<a.z<<"k \n";
     }
     else if(a.y <0 && a.z>0)

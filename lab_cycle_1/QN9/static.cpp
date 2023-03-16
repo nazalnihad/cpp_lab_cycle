@@ -4,7 +4,7 @@ class Static{
     public:
     Static()
     {
-        count++;
+        count++; //increase count when object made
     }
     void showcount()
     {

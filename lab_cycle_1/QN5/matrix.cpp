@@ -1,13 +1,13 @@
 #include <iostream>
 class matrix
 {
-	int **p;
+	int **p; //double pointer to store row array memory
 	int d1,d2;
 	public:
 	matrix(int,int);
 	void getelement(int,int,int);
 	int putelement(int,int);
-    ~matrix()
+    ~matrix() //destructor
     {
         for(int i=0;i<d2;i++)
         delete [] p[i];
@@ -20,10 +20,10 @@ matrix::matrix(int x,int y)
     std::cout<<"constructor called : \n";
 	d1 = x;
 	d2 = y;
-	p = new int *[d1];
+	p = new int *[d1]; //makes memory locations for no of rows
 	for(int i=0;i<d1;i++)
 	{
-		p[i] = new int [d2];
+		p[i] = new int [d2]; //makes row
 	}
 }
 void matrix::getelement(int x,int y,int value)

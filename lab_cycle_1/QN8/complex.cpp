@@ -8,17 +8,17 @@ class complex
         real = 0;
         imag = 0;
     }
-    complex(float);
+    complex(float); //overloading constructors
     complex(float,float);
     void complex_add(complex &,complex &);
     void display();
 };
-complex::complex(float a)
+complex::complex(float a) //constructor with 1 value
 {
     real = a;
     imag = a;
 }
-complex::complex(float a,float b)
+complex::complex(float a,float b) //constructor with 2 values
 {
     real = a;
     imag = b;

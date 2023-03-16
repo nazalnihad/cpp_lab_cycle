@@ -1,5 +1,5 @@
 #include <iostream>
-class class2;
+class class2; //demo declaration of second class
 class class1
 {
     int value_1;

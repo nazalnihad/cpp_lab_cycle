@@ -3,7 +3,7 @@
 class bank{
     private:
     std::string cust_name , acc_type;
-    int static accn_no ;
+    int static accn_no ; //static to generate and add account no
     int balance=0 ;
 
     public:

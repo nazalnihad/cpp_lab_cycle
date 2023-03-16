@@ -7,8 +7,8 @@ class vector{
 	vector(){}
 	void getvalues();
 	int getmagnitude();
-	void display();
-	void operator == (const vector&);
+	void display(); //operator overloading
+	void operator == (const vector&);//const used so no change in original value must change
 	void operator != (const vector&);
 	void operator < (const vector&);
 	void operator <= (const vector&);

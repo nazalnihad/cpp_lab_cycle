@@ -1,107 +1,181 @@
-//Write a C++ program using class to process shopping list for a Departmental
-//Store. The list include details such as the code, name, price and quantity of
-//each item and perform the operations like adding & deleting items to the list
-//and printing the total value of a purchase order
-
 #include <iostream>
-
+#include <iomanip>
 class store
 {
-    int code[20],price[20],quantity[20];
-    std::string name[20];
-    static int i;
+    float *code,*price;
+    int *quantity , limit;
+    std::string *item_name;
+
     public:
     store(){}
-    void add_item();
-    void delete_item();
-    void total();
+    void add_items();
+    void add_more();
+    int delete_items();
+    void display();
+    void receipt();
 };
-int store::i=0;
-void store::add_item()
+
+void store::add_items()
 {
-    std::cout<<"Enter code of item : ";
+    std::cout<<"\nHow many items do you want to purchase : ";
+    std::cin>>limit;
+    code = new float[limit];
+    price = new float[limit];
+    item_name = new std::string[limit];
+    quantity = new int[limit];
+
+    for(int i=0;i<limit;i++)
+    {
+    std::cout<<"\nEnter item name : ";
+    std::cin>>item_name[i];
+    std::cout<<"Enter item code : ";
     std::cin>>code[i];
-    std::cout<<"Enter name of item : ";
-    std::cin>>name[i];
-    std::cout<<"Enter price of item : ";
-    std::cin>>price[i];
-    std::cout<<"Enter quantity of item : ";
+    std::cout<<"Enter the quantity of the item : ";
     std::cin>>quantity[i];
-    i++;
+    std::cout<<"Enter the price of the items : ";
+    std::cin>>price[i];
+    price[i] = price[i]*quantity[i];
+    }
 }
-
-void store::delete_item()
+int store::delete_items()
 {
-    int choice,limit;
-    bool del = false;
-    std::cout<<"Enter item code to delete : ";
+    int choice;
+    std::cout<<"\nEnter the code of the item you want to delete : ";
     std::cin>>choice;
-
-    for(int l=0;l<20;l++)
+    int item=-1;
+    for(int i=0;i<limit;i++)
     {
-        if(code[l]==choice)
+        if(code[i]==choice)
         {
-            del = true;
-            limit = l;
+        item = i;
         }
     }
-
-    if(del==true)
+    if(item != -1)
     {
-        if (quantity[l]>1)
+        for(int i=item ; i<limit-1;i++)
         {
-            int value;
-            std::cout<<"1 - Enter the quantity you want to reduce\n2 - to delete item completely"
+            item_name[i]=item_name[i+1];
+            code[i] = code[i+1];
         }
-        for(int j=limit; j<i-limit;j++ )
-        {
-            code[j] = code[j-1];
-            name[j] = name[j-1];
-            price[j] = price[j-1];
-            quantity[j] = quantity[j-1];
-        }
-        i--;
+    limit = limit-1;
+    }
+    else{
+        std::cout<<"code not found \n";
+    }
+    return limit;
+}
+void store::display()
+{
+    for(int i=0;i<limit;i++)
+    {
+        std::cout<<"\nname : "<<item_name[i]<<"\ncode : "<<code[i]<<"\nquantity : "<<quantity[i]<<"\n"<<"===\nprice :"<<price[i]<<"\n===\n";
     }
 }
 
-void store::total()
-{   
-    for(int k=0;k<i;k++)
+void store::add_more()
+{
+    int more;
+    std::cout<<"How many more items do you want to add : ";
+    std::cin>>more;
+    int old_limit = limit;
+    limit = limit + more; 
+    
+    float *new_code = new float[limit];
+    float *new_price = new float[limit];
+    std::string *new_item_name = new std::string[limit];
+    int *new_quantity = new int[limit];
+
+    for(int i=0;i<old_limit;i++)
     {
-    std::cout<<name[k]<<" "<<code[k]<<" "<<price[k]<<" "<<quantity[k]<<"\n";
+        new_code[i] = code[i];
+        new_price[i] = price[i];
+        new_item_name[i] = item_name[i];
+        new_quantity[i] = quantity[i];
     }
-} 
+    delete[] code;
+    delete[] price;
+    delete[] item_name;
+    delete[] quantity;
+
+    code = new_code;
+    price = new_price;
+    item_name = new_item_name;
+    quantity = new_quantity;
+
+    for(int i=limit-more;i<limit;i++)
+    {
+    std::cout<<"\nEnter item name : ";
+    std::cin>>item_name[i];
+    std::cout<<"Enter item code : ";
+    std::cin>>code[i];
+    std::cout<<"Enter the quantity of the item : ";
+    std::cin>>quantity[i];
+    std::cout<<"Enter the price of the items : ";
+    std::cin>>price[i];
+    price[i] = price[i]*quantity[i];
+    }
+}
+void store::receipt()
+{
+    int sum=0;
+    for(int i=0;i<limit;i++)
+    {
+        sum = sum+price[i];
+    }
+    std::cout<<"\n\t======== RECEIPT ========\t\t\n";
+    std::cout<<"NAME"<<std::setw(10)<<"CODE"<<std::setw(10)<<"QUANTITY"<<std::setw(20)<<"PRICE"<<"\n";
+    for(int i=0;i<limit;i++){
+    std::cout<<item_name[i]<<std::setw(10)<<code[i]<<std::setw(10)<<quantity[i]<<std::setw(20)<<price[i]<<"\n";
+    }
+    std::cout<<std::setw(40)<<"TOTAL AMOUNT = "<<sum<<"\n";
+}
 
 int main()
 {
- int choice;
- std::cout<<"Enter choice : ";
- std::cin>>choice;
+    int option;
+    std::cout<<"\n=== Welcome to Deparetment Store ===\n";
+    std::cout<<"\n press 1 to start \n any other key to quit : ";
+    std::cin>>option;
+    store a;
 
- store a;
- while(choice==1)
- {
-    int opt;
-    std::cout<<"1 - to add item \n2 - to remove an item \n3 - to get the total bill \n4 - to quit \n : ";
-    std::cin>>opt;
-
-    switch(opt)
+    if(option == 1)
     {
-        case 1:
-        a.add_item();
-        break;
+        int choice;
+        a.add_items();
+        do{
+            std::cout<<"\nChoose what you want to do \n";
+            std::cout<<"1 - to add more items \n";
+            std::cout<<"2 - to remove an item \n";
+            std::cout<<"3 - to show your cart \n";
+            std::cout<<"4 - to get the reciept \n";
+            std::cout<<"5 - to buy and quit \n";
+            std::cin>>choice;
 
-        case 2:
-        a.delete_item();
-        break;
+            switch(choice){
+            case 1:
+            a.add_more();
+            break;
 
-        case 3:
-        a.total();
-        break;
+            case 2:
+            a.delete_items();
+            break;
 
-        case 4:
-        exit(0);
-        break;
+            case 3:
+            a.display();
+            break;
+
+            case 4:
+            a.receipt();
+            break;
+
+            case 5:
+            std::cout<<"\n========== THANKYOU ==========\n";
+            exit(0);
+            }
+        }while(choice!=5);
     }
- }
+    else{
+        exit(0);
+    }
+    return 0;
 }
