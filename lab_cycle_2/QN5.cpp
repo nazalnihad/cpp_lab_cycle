@@ -63,7 +63,7 @@ class sports:public football,public cricket
 class world:public sports{
     std::string name;
     public:
-    world(std::string your_name,int n1,int n2,int n3):sports(n1,n2,n3)
+    world(std::string your_name,int n1,int n2,int n3):sports(n1,n2,n3) 
     {
         name = your_name;
     }

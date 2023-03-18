@@ -10,7 +10,7 @@ class complex
     }
     int getelements();
     void display();
-    friend complex add(complex , complex);
+    friend complex add(complex , complex); //friend function
 };
 
 int complex::getelements()
