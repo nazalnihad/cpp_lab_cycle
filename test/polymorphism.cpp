@@ -16,12 +16,12 @@ class item
 int main()
 {
     item *ptr;
-    item *count = ptr;
     ptr = new item[3];
+    item *count = ptr;
     for(int i=0;i<3;i++)
     {
-    ptr->get_data();
-    ptr++;
+        ptr->get_data();
+        ptr++;
     }
 
     for(int i=0;i<3;i++)
