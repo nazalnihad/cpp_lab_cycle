@@ -1,52 +1,54 @@
 #include <iostream>
 class abstract
 {
-    protected:
+protected:
     int age;
     std::string name;
 
-    public:
-    virtual void get_details()=0;
-    virtual void display()=0;
+public:
+    virtual void get_details() = 0; // pure virtual fn
+    virtual void display() = 0;     // pute virtual fn
 };
- 
-class derived1:public abstract
+
+class derived1 : public abstract
 {
-    public:
-    void get_details();
+public:
+    void get_details(); // desribe the derived code here
     void display();
 };
 
 void derived1::display()
 {
-    std::cout<<"\nName = "<<name<<"\n"<<"Age = "<<age<<"\n";
+    std::cout << "\nName = " << name << "\n"
+              << "Age = " << age << "\n";
 }
 void derived1::get_details()
 {
-    std::cout<<"This is derived class 1 \n";
-    std::cout<<"\nEnter your name : ";
-    std::cin>>name;
-    std::cout<<"Enter your age : ";
-    std::cin>>age;
+    std::cout << "This is derived class 1 \n";
+    std::cout << "\nEnter your name : ";
+    std::cin >> name;
+    std::cout << "Enter your age : ";
+    std::cin >> age;
 }
 
-class derived2:public abstract
+class derived2 : public abstract
 {
-    public:
+public:
     void get_details();
     void display();
 };
 void derived2::display()
 {
-    std::cout<<"\nfav sport = "<<name<<"\n"<<"Age in 10yrs = "<<age<<"\n";
+    std::cout << "\nfav sport = " << name << "\n"
+              << "Age in 10yrs = " << age << "\n";
 }
 void derived2::get_details()
 {
-    std::cout<<"This is derived class 2 \n";
-    std::cout<<"\nEnter your fav sport : ";
-    std::cin>>name;
-    std::cout<<"Enter your age in 10 yrs : ";
-    std::cin>>age;
+    std::cout << "This is derived class 2 \n";
+    std::cout << "\nEnter your fav sport : ";
+    std::cin >> name;
+    std::cout << "Enter your age in 10 yrs : ";
+    std::cin >> age;
 }
 
 int main()
