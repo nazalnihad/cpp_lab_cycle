@@ -30,7 +30,7 @@ void string::concate(string &a , string &b)
 {
     length = a.length+b.length;
     delete name;
-    name = new char[length];
+    name = new char[length+1];
     strcpy(name,a.name);
     strcat(name,b.name);
 }
