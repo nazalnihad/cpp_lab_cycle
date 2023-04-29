@@ -70,8 +70,6 @@ public:
 };
 
 // derived class throught multilevel inheritence i.e from base1+base2 -> derived1 -> derived2
-// nice
-
 class championship : public sports
 {
     std::string name;
