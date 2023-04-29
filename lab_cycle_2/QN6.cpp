@@ -1,6 +1,6 @@
 #include <iostream>
 
-class student
+class studentdsds
 {
 protected:
     int roll_no;
