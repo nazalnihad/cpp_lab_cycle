@@ -1,97 +1,107 @@
 #include <iostream>
 
-class area_shapes{
-    private:
-    int side , base , height , pll_side1 , pll_side2  ;
-    float  radius , length ,breadth ,pi=3.14 ;
-    public:
-    //function overloading
-    int area(int);
-    int area(int,int);
-    float area(float);
-    float area(float,float);
-    int area(int,int,int);
-};
+float PI = 3.14;
 
-int area_shapes::area(int a) //square area
+int area(int side) // square
 {
-    side = a;
-    return a*a;     
+    return side * side;
 }
 
-int area_shapes::area(int b,int h)
+int area(int length, int width) // rectangle
 {
-    base = b;
-    height = h;
-    return (b*h)/2;
+    return length * width;
 }
 
-float area_shapes::area(float r)
+float area(float base, float height) // triangle
 {
-    radius = r;
-    return pi*r*r;
+    return 0.5 * base * height;
 }
 
-float area_shapes::area(float l,float b)
+float area(float radius) // circle
 {
-    length = l;
-    breadth = b;
-    return l*b;
+    return PI * radius * radius;
 }
 
-int area_shapes::area(int pl_1,int pl_2,int pl_h)
+float area(float pll_side1, float pll_side2, float height) // paralellogram
 {
-    pll_side1 = pl_1;
-    pll_side2 = pl_2;
-    height = pl_h;
-    return ((pl_1+pl_2)*pl_h)/2;
+    return ((pll_side1 + pll_side2) * height) / 2;
 }
 
 int main()
 {
+    int choice;
+    do
+    {
+        std::cout << "Select a shape:\n";
+        std::cout << "1. Square\n";
+        std::cout << "2. Rectangle\n";
+        std::cout << "3. Triangle\n";
+        std::cout << "4. Circle\n";
+        std::cout << "5. paralellogram\n";
+        std::cout << "6. Exit\n";
+        std::cout << " : ";
+        std::cin >> choice;
 
- area_shapes square;
- int side;
- std::cout<<"\n-- Area of square --";
- std::cout<<"\nenter side : ";
- std::cin>>side;
- std::cout<<"Area of the square is : "<<square.area(side)<<"\n";
+        switch (choice)
+        {
+        case 1:
+        {
+            int side;
+            std::cout << "Enter the length of a side: ";
+            std::cin >> side;
+            std::cout << "Area of the square is " << area(side) << "\n";
+            break;
+        }
+        case 2:
+        {
+            int length, width;
+            std::cout << "Enter the length and width: ";
+            std::cin >> length >> width;
+            std::cout << "Area of the rectangle is " << area(length, width) << "\n";
+            break;
+        }
+        case 3:
+        {
+            float base, height;
+            std::cout << "Enter the base and height: ";
+            std::cin >> base >> height;
+            std::cout << "Area of the triangle is " << area(base, height) << "\n";
+            break;
+        }
+        case 4:
+        {
+            float radius;
+            std::cout << "Enter the radius: ";
+            std::cin >> radius;
+            std::cout << "Area of the circle is " << area(radius) << "\n";
+            break;
+        }
+        case 5:
+        {
+            float pll_side1, pll_side2, height;
+            std::cout << "Enter parallel side 1: ";
+            std::cin >> pll_side1;
+            std::cout << "Enter parallel side 2: ";
+            std::cin >> pll_side2;
+            std::cout << "Enter height: ";
+            std::cin >> height;
+            std::cout << "Area of the paralellogram is " << area(pll_side1, pll_side2, height) << "\n";
+            break;
+        }
+        case 6:
+        {
+            return 0;
+            break;
+        }
+        default:
+        {
+            std::cout << "Invalid choice. Please try again. \n";
+            break;
+        }
+        }
 
- area_shapes t;
- int base,height;
- std::cout<<"\n-- Area of triangle --";
- std::cout<<"\nenter base : ";
- std::cin>>base;
- std::cout<<"enter height : ";
- std::cin>>height;
- std::cout<<"area of the triangle is : "<<t.area(base,height)<<"\n";
+        std::cout << "\n";
+    } while (choice != 6);
 
- area_shapes c;
- int radius;
- std::cout<<"\n-- Area of circle --";
- std::cout<<"\nenter the radius : ";
- std::cin>>radius;
- std::cout<<"area of the circle is : "<<c.area(radius)<<"\n";
-
- area_shapes tp;
- int pll_side1 , pll_side2 , height_t;
- std::cout<<"\n-- Area of trapezium --";
- std::cout<<"\nenter the parallel side1 : ";
- std::cin>>pll_side1;
- std::cout<<"enter the parallel side2 : ";
- std::cin>>pll_side2;
- std::cout<<"enter the height : ";
- std::cin>>height_t;
- std::cout<<"area of the trapezium is : "<< tp.area(pll_side1,pll_side2,height_t)<<"\n";
-
- area_shapes ect;
- int length, breadth;
- std::cout<<"\n-- Area of rectangle --";
- std::cout<<"\nenter the length : ";
- std::cin>>length;
- std::cout<<"enter the breadth : ";
- std::cin>>breadth;
- std::cout<<"area of the rectangle is : "<<ect.area(length,breadth)<<"\n";
- 
- return 0;
+    return 0;
 }
