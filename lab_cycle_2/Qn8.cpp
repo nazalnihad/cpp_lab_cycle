@@ -1,72 +1,74 @@
 #include <iostream>
 class shapes
 {
-    protected:
+protected:
     float area;
 
-    public:
-    virtual void get_area() = 0;
+public:
+    virtual void get_area(){};
     virtual void display()
     {
-        std::cout<<"The area is : "<<area<<"\n";
+        std::cout << "The area is : " << area << "\n";
     }
 };
 
-class circle:public shapes
+class circle : public shapes
 {
     int radius;
-    float pi=3.14;
+    float pi = 3.14;
 
-    public:
-    void get_area(){
-        std::cout<<"\nEnter the radius of the circle : ";
-        std::cin>>radius;
-        area = radius*radius*pi;
+public:
+    void get_area()
+    {
+        std::cout << "\nEnter the radius of the circle : ";
+        std::cin >> radius;
+        area = radius * radius * pi;
     }
 };
 
-class square:public shapes
+class square : public shapes
 {
     int side;
-    public:
+
+public:
     void get_area()
     {
-        std::cout<<"\nEnter the side of the square : ";
-        std::cin>>side;
-        area = side*side;
+        std::cout << "\nEnter the side of the square : ";
+        std::cin >> side;
+        area = side * side;
     }
 };
 
-class ellipse:public shapes
+class ellipse : public shapes
 {
-    int major_axis,minor_axis;
-    float pi=3.14;
+    int major_axis, minor_axis;
+    float pi = 3.14;
 
-    public:
+public:
     void get_area()
     {
-        std::cout<<"\nEnter the major axis : ";
-        std::cin>>major_axis;
-        std::cout<<"Enter the minor axis : ";
-        std::cin>>minor_axis;
+        std::cout << "\nEnter the major axis : ";
+        std::cin >> major_axis;
+        std::cout << "Enter the minor axis : ";
+        std::cin >> minor_axis;
 
-        area = pi*major_axis*minor_axis;
+        area = pi * major_axis * minor_axis;
     }
 };
 
-class rectangle:public shapes
+class rectangle : public shapes
 {
-    int length,breadth;
+    int length, breadth;
 
-    public:
+public:
     void get_area()
     {
-        std::cout<<"\nEnter the length of the triangle : ";
-        std::cin>>length;
-        std::cout<<"Enter the breadth of the triangel : ";
-        std::cin>>breadth;
+        std::cout << "\nEnter the length of the triangle : ";
+        std::cin >> length;
+        std::cout << "Enter the breadth of the triangel : ";
+        std::cin >> breadth;
 
-        area = length*breadth;
+        area = length * breadth;
     }
 };
 
@@ -74,50 +76,52 @@ int main()
 {
     int choice = 1;
 
-    while(choice>=1 && choice<=5)
+    while (choice >= 1 && choice <= 5)
     {
-    shapes *ptr;
-    std::cout<<"\nEnter the choice to find area \n";
-    std::cout<<"1 - for circle\n";
-    std::cout<<"2 - for square\n";
-    std::cout<<"3 - for ellipse\n";
-    std::cout<<"4 - for rectangle\n";
-    std::cout<<"5 - to quit\n : ";
-    std::cin>>choice;
+        shapes *ptr; // base class pointer for calling/pointing all it's derived classes
 
-    switch (choice)
-    {
-    case 1:
-        ptr = new circle;
-        ptr->get_area();
-        ptr->display();
-        break;
+        std::cout << "\nEnter the choice to find area \n";
+        std::cout << "1 - for circle\n";
+        std::cout << "2 - for square\n";
+        std::cout << "3 - for ellipse\n";
+        std::cout << "4 - for rectangle\n";
+        std::cout << "5 - to quit\n : ";
+        std::cin >> choice;
 
-    case 2:
-        ptr = new square;
-        ptr->get_area();
-        ptr->display();
-        break;
+        switch (choice)
+        {
+        case 1:
+            ptr = new circle;
+            ptr->get_area();
+            ptr->display();
+            break;
 
-    case 3:
-        ptr = new ellipse;
-        ptr->get_area();
-        ptr->display();
-        break;
+        case 2:
+            ptr = new square;
+            ptr->get_area();
+            ptr->display();
+            break;
 
-    case 4:
-        ptr = new rectangle;
-        ptr->get_area();
-        ptr->display();
-        break;
+        case 3:
+            ptr = new ellipse;
+            ptr->get_area();
+            ptr->display();
+            break;
 
-    case 5:
-        exit(0);
+        case 4:
+            ptr = new rectangle;
+            ptr->get_area();
+            ptr->display();
+            break;
 
-    default:
-        std::cout<<"Enter a valid value \n";
-        break;
+        case 5:
+            std::cout << "\nExiting..";
+            return 0;
+
+        default:
+            std::cout << "Enter a valid value \n";
+            break;
+        }
     }
-    }
-return 0;
+    return 0;
 }

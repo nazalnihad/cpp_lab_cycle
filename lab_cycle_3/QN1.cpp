@@ -13,7 +13,7 @@ public:
 class derived1 : public abstract
 {
 public:
-    void get_details(); // desribe the derived code here
+    void get_details(); // describe the derived code here
     void display();
 };
 
@@ -24,7 +24,7 @@ void derived1::display()
 }
 void derived1::get_details()
 {
-    std::cout << "This is derived class 1 \n";
+    std::cout << "\nThis is derived class 1 \n";
     std::cout << "\nEnter your name : ";
     std::cin >> name;
     std::cout << "Enter your age : ";
@@ -40,14 +40,14 @@ public:
 void derived2::display()
 {
     std::cout << "\nfav sport = " << name << "\n"
-              << "Age in 10yrs = " << age << "\n";
+              << "Your favorite number = " << age << "\n";
 }
 void derived2::get_details()
 {
-    std::cout << "This is derived class 2 \n";
-    std::cout << "\nEnter your fav sport : ";
+    std::cout << "\nThis is derived class 2 \n";
+    std::cout << "\nEnter your favorite sport : ";
     std::cin >> name;
-    std::cout << "Enter your age in 10 yrs : ";
+    std::cout << "Enter your favorite number : ";
     std::cin >> age;
 }
 
