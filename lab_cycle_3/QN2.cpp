@@ -49,19 +49,19 @@ T calculator<T>::divide()
 int main()
 {
     bool start = true;
+    int ask;
     int choice;
     while (start)
     {
-        std::cout << "1 - to operate on float(decimal) values :\n2 - to operate on integer values : \n3 - to quit\n : ";
+        std::cout << "\n1 - to operate on float(decimal) values :\n2 - to operate on integer values : \n3 - to quit\n : ";
         std::cin >> choice;
         if (choice == 1)
         {
-            int float_cont = 1;
-            calculator<float> a;
+            calculator<float> a; // t is float
             int float_option;
             do
             {
-                std::cout << "\n1 - to add\n2 - to subtract\n3 - to multiply\n4 - to divide\n : ";
+                std::cout << "\n1 - to add\n2 - to subtract\n3 - to multiply\n4 - to divide \n5 - to exit and change option  :  ";
                 std::cin >> float_option;
                 switch (float_option)
                 {
@@ -81,21 +81,29 @@ int main()
                     a.divide();
                     break;
 
+                case 5:
+                    std::cout << "\n1 - continue\nany other number to exit \n : ";
+                    std::cin >> ask;
+                    if (ask != 1)
+                    {
+                        start = false;
+                    }
+
+                    break;
+
                 default:
                     std::cout << "invalid option \n";
                 }
-                std::cout << "\n1 - continue\nany other number to exit \n : ";
-                std::cin >> float_cont;
-            } while (float_cont == 1);
+
+            } while (float_option != 5);
         }
         else if (choice == 2)
         {
-            calculator<int> b;
+            calculator<int> b; // t is int
             int int_option;
-            int int_cont = 1;
             do
             {
-                std::cout << "\n1 - to add\n2 - to subtract\n3 - to multiply\n4 - to divide\n : ";
+                std::cout << "\n1 - to add\n2 - to subtract\n3 - to multiply\n4 - to divide \n5 - to exit or change option \n : ";
                 std::cin >> int_option;
                 switch (int_option)
                 {
@@ -115,12 +123,20 @@ int main()
                     b.divide();
                     break;
 
+                case 5:
+                    std::cout << "\n1 - continue with another number \nany other number to exit \n : ";
+                    std::cin >> ask;
+                    if (ask != 1)
+                    {
+                        start = false;
+                    }
+
+                    break;
+
                 default:
                     std::cout << "invalid option \n";
                 }
-                std::cout << "\n1 - continue\nany other number to exit \n : ";
-                std::cin >> int_cont;
-            } while (int_cont == 1);
+            } while (int_option != 5);
         }
         else if (choice == 3)
         {
@@ -131,5 +147,6 @@ int main()
             std::cout << "pls choose a valid operation \n";
         }
     }
+    std::cout << "\nExiting....";
     return 0;
 }
