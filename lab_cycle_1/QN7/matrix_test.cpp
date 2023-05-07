@@ -19,7 +19,7 @@ public:
             delete p[i];
         }
         delete p;
-        std::cout << "memory release\n";
+        std::cout << "memory released\n";
     }
 };
 matrix::matrix(int x, int y)
